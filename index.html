@@ -73,31 +73,29 @@
               </ul>
             </div>
             <a
-              class="btn btn-ghost text-xl md:text-4xl font-black text-[#12132D]"
+              class="btn btn-ghost text-2xl md:text-5xl font-black text-[#12132D]"
               >VinTage</a
             >
           </div>
           <div class="navbar-end">
             <div class="navbar-center hidden lg:flex">
-              <ul class="menu menu-horizontal px-5 gap-5">
+              <div class="menu menu-horizontal px-5 gap-5 text-[#797dfc]">
                 <div class="tooltip" data-tip="Home">
-                  <li>
-                    <i class="fa-solid fa-house border border-[#999]"></i>
-                  </li>
+                  <li><i class="fa-solid fa-house border border-[#999] text-xl p-4"></i></li>
                 </div>
                 <div class="tooltip" data-tip="Blog">
-                  <li><i class="fa-solid fa-pen border border-[#999]"></i></li>
+                  <li><i class="fa-solid fa-pen border border-[#999] text-xl p-4"></i></li>
                 </div>
                 <div class="tooltip" data-tip="Service">
-                  <li><i class="fa-solid fa-user border border-[#999]"></i></li>
+                  <li><i class="fa-solid fa-user border border-[#999] text-xl p-4"></i></li>
                 </div>
                 <div class="tooltip" data-tip="Contact">
-                  <li><i class="fa-solid fa-flag border border-[#999]"></i></li>
+                  <li><i class="fa-solid fa-flag border border-[#999] text-xl p-4"></i></li>
                 </div>
-              </ul>
+              </div>
             </div>
             <button
-              class="btn font-bold px-5 md:px-11 text-md md:text-xl bg-[#797dfc] rounded-2xl"
+              class="btn btn-primary btn-sm md:btn-md lg:btn-lg lg:text-2xl bg-[#797dfc] text-white"
             >
               Sign In
             </button>
@@ -126,11 +124,11 @@
             <div class="relative">
               <input
                 type="text"
-                placeholder="Search here anything"
-                class="input w-full rounded-2xl text-black text-base lg:text-xl"
+                placeholder="Search here..."
+                class="input w-full text-black text-lg lg:text-xl"
               />
               <button
-                class="btn sm:btn-sm md:btn-md text-md md:text-xl bg-[#797dfc] rounded-2xl absolute right-0"
+                class="btn btn-sm md:btn-md text-base md:text-xl bg-[#797dfc] text-white rounded-lg absolute right-0"
               >
                 Search
               </button>
@@ -229,7 +227,7 @@
             </div>
             <div class="px-4 py-2 flex justify-between bg-white rounded-xl">
               <h3>10 Kids Unaware of Their Halloween Costume</h3>
-              <div class="flex items-center space-x-1">
+              <div class="flex items-center space-x-2">
                 <i class="fa-regular fa-eye"></i><span>1560</span>
               </div>
             </div>
@@ -250,7 +248,9 @@
               share ideas, and engage in meaningful discussions. Expand your
               network and knowledge with us!
             </p>
-            <button class="btn btn-primary btn-sm md:btn-lg bg-[#797dfc]">
+            <button
+              class="btn btn-primary btn-sm md:btn-lg lg:text-2xl bg-[#797dfc] text-white"
+            >
               Registered Now
             </button>
           </div>
@@ -352,24 +352,32 @@
     <!-- Main Area End -->
 
     <!-- Footer Area Start -->
-    <footer class="bg-[#12132D] text-white py-5 ">
+    <footer class="bg-[#12132D] text-white py-5">
       <section
         class="footer footer-center p-10 rounded w-[95%] md:w-[80%] mx-auto"
       >
         <div>
-          <h2 class="text-2xl lg:text-4xl font-black text-[#8b90e8]">VinTage</h2>
-          <p class="pt-5 text-sm md:text-lg">The vintage forum is a platform for enthusiasts to discuss and share their passion <br> for classic cars, fashion, music, and more.</p>
+          <h2 class="text-2xl lg:text-4xl font-black text-[#8b90e8]">
+            VinTage
+          </h2>
+          <p class="pt-5 text-sm md:text-lg">
+            The vintage forum is a platform for enthusiasts to discuss and share
+            their passion <br />
+            for classic cars, fashion, music, and more.
+          </p>
         </div>
         <div>
-          <div class="grid grid-flow-col gap-4">
-            <a><i class="fa-brands fa-facebook"></i></a>
-            <a><i class="fa-brands fa-twitter"></i></a>
-            <a><i class="fa-brands fa-instagram"></i></a>
-            <a><i class="fa-brands fa-github"></i></a>
+          <div class="grid grid-flow-col gap-5 lg:gap-10">
+            <a><i class="fa-brands fa-facebook text-xl lg:text-3xl"></i></a>
+            <a><i class="fa-brands fa-twitter text-xl lg:text-3xl"></i></a>
+            <a><i class="fa-brands fa-instagram text-xl lg:text-3xl"></i></a>
+            <a><i class="fa-brands fa-github text-xl lg:text-3xl"></i></a>
           </div>
         </div>
         <aside class="border-t-2 w-full pt-10">
-          <p class="text-sm md:text-lg">Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+          <p class="text-sm md:text-lg">
+            Copyright © 2024 - All right reserved by ACME Industries Ltd
+          </p>
         </aside>
       </section>
     </footer>
