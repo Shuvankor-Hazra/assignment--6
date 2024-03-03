@@ -11,12 +11,13 @@ const loadAuthor = async () => {
 const displayPosts = (posts) => {
   const cardContainer = document.getElementById("card-container");
   posts.forEach((post) => {
-    console.log(post)
+    // console.log(post)
     const discusContainer = document.createElement("div");
     discusContainer.classList = `mb-5 w-full p-6 md:p-8 lg:10 md:flex bg-[#797DFC1A] rounded-3xl space-y-2 md:space-x-6 border border-[#797DFC] font-inter`;
     discusContainer.innerHTML = `
-    <div class="max-w-16 max-h-16 bg-white rounded-2xl relative">
-    <img class="w-full" src="${post.image}" alt="" />
+    <div class="relative w-[72px]">
+    <img class="rounded-2xl" src=${post.image} alt="" >
+    
     <div class="p-2 rounded-full bg-green-500 absolute border-2 border-white -top-1 -right-1">
     </div>
     </div>
@@ -31,7 +32,7 @@ const displayPosts = (posts) => {
     <p class="pb-6 border-b-2 border-dashed border-[#12132D40] text-[#12132D99]">
       ${post.description}
     </p>
-    <div class="flex justify-between min-w-full lg:min-w-[700px]">
+    <div class="flex justify-between min-w-full lg:min-w-[600px]">
       <div class="flex items-center gap-5">
         <div class="space-x-4">
           <i class="fa-regular fa-envelope"></i><span>${post.comment_count}</span>
@@ -55,4 +56,49 @@ const displayPosts = (posts) => {
   });
 };
 
+
+const postsContainer = async() => {
+  const postContainer = document.getElementById('posts-container');
+  const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
+  const data = await res.json();
+  data.forEach((element)=>{
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="card border-2 border-[#12132D26] min-h-[550px]">
+    <figure>
+    <img src="${element.cover_image}" />
+    </figure>
+    <div class="card-body">
+      <div class="flex items-center gap-5 text-[#12132D99]">
+        <i class="fa-regular fa-calendar-days"></i>
+        <p>${element?.author?.posted_date || 'No Publish Date'}</p>
+      </div>
+      <h2 class="card-title text-lg font-extrabold font-mulish">
+        ${element.title}
+      </h2>
+      <p class="pb-4">
+        ${element.description}
+      </p>
+      <div class="card-actions">
+        <div>
+          <img class="h-[44px] rounded-full" src="${element.profile_image}" alt="" />
+        </div>
+        <div>
+          <h4 class="font-bold">${element.author.name}</h4>
+          <p>${element?.author?.designation || 'Unknown'}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    `
+    postContainer.appendChild(div);
+  })
+
+}
+
+
+
+
+
+postsContainer();
 loadAuthor();
