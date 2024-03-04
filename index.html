@@ -22,7 +22,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-
   <body class="font-mulish">
     <!-- Header Area Start -->
     <header class="max-w-[1170px] px-2 lg:px-0 mx-auto">
@@ -138,12 +137,14 @@
             </p>
             <!-- Input / Button -->
             <div class="relative">
-              <input id="search-field"
+              <input
+                id="search-field"
                 type="text"
                 placeholder="Search here..."
                 class="input w-full text-black text-lg lg:text-xl"
               />
-              <button onclick="handleSearch()"
+              <button
+                onclick="handleSearch()"
                 class="btn btn-primary md:btn-md text-base md:text-xl bg-[#797dfc] text-white rounded-lg absolute right-0"
               >
                 Search
@@ -174,7 +175,6 @@
       </banner>
     </header>
     <!-- Header Area End -->
-
     <!-- Main Area Start -->
     <main class="max-w-[1170px] px-2 lg:px-0 mx-auto">
       <!-- Discuss Section -->
@@ -192,18 +192,23 @@
         <div class="mt-10 md:flex md:space-x-6">
           <!-- Discus-left -->
           <div id="card-container"></div>
-          
+
           <!-- Discus-right -->
-          <div class="mt-10 mb-5 md:mt-0 bg-[#12132D0D] rounded-3xl p-6 md:p-8 flex-1">
-            <div class="flex justify-between pb-5 border-b-2 border-dashed border-black">
+          <div
+            class="mt-10 mb-5 md:mt-0 bg-[#12132D0D] rounded-3xl p-6 md:p-8 flex-1"
+          >
+            <div
+              class="flex justify-between pb-5 border-b-2 border-dashed border-black"
+            >
               <h2 class="text-2xl font-bold">Title</h2>
               <div class="flex items-center space-x-3 text-2xl">
                 <i class="fa-solid fa-check-double text-green-500"></i>
-                <h3 class="text-[#12132D99] text-2xl font-bold">Mark as read (<span id="read-counts">0</span>)</h3>
+                <h3 class="text-[#12132D99] text-2xl font-bold">
+                  Mark as read (<span id="read-counts">0</span>)
+                </h3>
               </div>
             </div>
-            <div  id="show-read-container">
-            </div>
+            <div id="show-read-container"></div>
           </div>
         </div>
       </section>
@@ -244,17 +249,19 @@
           </p>
         </div>
         <!-- Posts Card -->
-        <div id="posts-container" class="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          id="posts-container"
+          class="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <!-- Single Post Card -->
         </div>
       </section>
     </main>
     <!-- Main Area End -->
-
     <!-- Footer Area Start -->
     <footer class="bg-[#12132D] text-white py-16">
       <section
-        class="footer footer-center px-2 lg:px-10 rounded max-w-[1170px] mx-auto "
+        class="footer footer-center px-2 lg:px-10 rounded max-w-[1170px] mx-auto"
       >
         <div>
           <h2 class="text-2xl lg:text-4xl font-black text-[#8b90e8]">
@@ -268,10 +275,26 @@
         </div>
         <div>
           <div class="grid grid-flow-col gap-5 lg:gap-10">
-            <a><i class="fa-brands fa-facebook text-xl lg:text-3xl cursor-pointer"></i></a>
-            <a><i class="fa-brands fa-twitter text-xl lg:text-3xl cursor-pointer"></i></a>
-            <a><i class="fa-brands fa-instagram text-xl lg:text-3xl cursor-pointer"></i></a>
-            <a><i class="fa-brands fa-github text-xl lg:text-3xl cursor-pointer"></i></a>
+            <a
+              ><i
+                class="fa-brands fa-facebook text-xl lg:text-3xl cursor-pointer"
+              ></i
+            ></a>
+            <a
+              ><i
+                class="fa-brands fa-twitter text-xl lg:text-3xl cursor-pointer"
+              ></i
+            ></a>
+            <a
+              ><i
+                class="fa-brands fa-instagram text-xl lg:text-3xl cursor-pointer"
+              ></i
+            ></a>
+            <a
+              ><i
+                class="fa-brands fa-github text-xl lg:text-3xl cursor-pointer"
+              ></i
+            ></a>
           </div>
         </div>
         <aside class="border-t-2 w-full pt-10">
@@ -282,7 +305,6 @@
       </section>
     </footer>
     <!-- Footer Area End -->
-
     <!-- Script -->
     <script src="./js/scripts.js"></script>
   </body>

@@ -2,8 +2,8 @@ const loadAuthor = async (searchValue) => {
   toggleSpinner(true);
   await new Promise(resolve=>setTimeout(resolve, 2000));
   const postUrl = 'https://openapi.programming-hero.com/api/retro-forum/posts'
-  const SearchUrl = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchValue}`
-  const res = await fetch(searchValue ? SearchUrl : postUrl)
+  const searchUrl = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchValue}`;
+  const res = await fetch(searchValue ? searchUrl : postUrl);
   const data = await res.json();
   const posts = data.posts;
   displayPosts(posts);
@@ -13,7 +13,6 @@ const displayPosts = (posts) => {
   const cardContainer = document.getElementById("card-container");
   cardContainer.textContent = '';
   posts.forEach((post) => {
-    // console.log(post)
     const discusContainer = document.createElement("div");
     discusContainer.classList = `mb-5 p-6 md:p-8 lg:10 md:flex bg-[#797DFC1A] rounded-3xl space-y-2 md:space-x-6 border border-[#797DFC] font-inter`;
     discusContainer.innerHTML = `
@@ -62,7 +61,6 @@ const displayPosts = (posts) => {
     </div>
   </div>
     `;
-
     cardContainer.appendChild(discusContainer);
   });
   toggleSpinner(false);
@@ -73,7 +71,6 @@ const handleShowDetails = async (id) => {
     `https://openapi.programming-hero.com/api/retro-forum/post/${id}`
   );
   const data = await res.json();
-
   showReadDetails(data);
 };
 
@@ -85,15 +82,14 @@ const showReadDetails = (data) => {
   const div = document.createElement("div");
   div.classList = `p-4 my-4 flex justify-between bg-white rounded-xl flex-1`;
   div.innerHTML = `
-  <h3 class="text-xl w-4/5">${sum}. ${data.title}</h3>
-  <div class="flex items-center space-x-2 text-xl">
+  <h3 class="text-lg w-4/5">${sum}. ${data.title}</h3>
+  <div class="flex items-center space-x-2 text-lg">
     <i class="fa-regular fa-eye"></i><span>${data.view_count}</span>
   </div>
   `;
   showReadContainer.appendChild(div);
   readCounts.innerText = sum;
 };
-
 
 const toggleSpinner = (isTrue) => {
   const loaderSpinner = document.getElementById('loader-icon');
@@ -104,17 +100,11 @@ const toggleSpinner = (isTrue) => {
   }
 }
 
-
-
-
-
 const handleSearch = () => {
   toggleSpinner(true);
   const searchField = document.getElementById("search-field");
   const searchValue = searchField.value;
-
   loadAuthor(searchValue);
-
   searchField.value = "";
 };
 
