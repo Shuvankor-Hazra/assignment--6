@@ -1,23 +1,28 @@
-const loadAuthor = async () => {
-  const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
+const loadAuthor = async (searchValue) => {
+  toggleSpinner(true);
+  await new Promise(resolve=>setTimeout(resolve, 2000));
+  const postUrl = 'https://openapi.programming-hero.com/api/retro-forum/posts'
+  const SearchUrl = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchValue}`
+  const res = await fetch(searchValue ? SearchUrl : postUrl)
   const data = await res.json();
   const posts = data.posts;
-  //   console.log(posts)
   displayPosts(posts);
 };
 
-
 const displayPosts = (posts) => {
   const cardContainer = document.getElementById("card-container");
+  cardContainer.textContent = '';
   posts.forEach((post) => {
     // console.log(post)
     const discusContainer = document.createElement("div");
-    discusContainer.classList = `mb-5 w-full p-6 md:p-8 lg:10 md:flex bg-[#797DFC1A] rounded-3xl space-y-2 md:space-x-6 border border-[#797DFC] font-inter`;
+    discusContainer.classList = `mb-5 p-6 md:p-8 lg:10 md:flex bg-[#797DFC1A] rounded-3xl space-y-2 md:space-x-6 border border-[#797DFC] font-inter`;
     discusContainer.innerHTML = `
-    <div class="relative w-[72px]">
+    <div class="w-[72px] relative">
     <img class="rounded-2xl" src=${post.image} alt="" >
     
-    <div id="active-round" class="p-2 rounded-full ${post.isActive === true ? 'bg-green-500' : 'bg-red-500'} absolute border-2 border-white -top-1 -right-1">
+    <div id="active-round" class="p-2 rounded-full ${
+      post.isActive === true ? "bg-green-500" : "bg-red-500"
+    } absolute border-2 border-white -top-1 -right-1">
     </div>
     </div>
     <div class="space-y-4">
@@ -34,16 +39,22 @@ const displayPosts = (posts) => {
     <div class="flex justify-between min-w-full lg:min-w-[600px]">
       <div class="flex items-center gap-5">
         <div class="space-x-4">
-          <i class="fa-regular fa-envelope"></i><span>${post.comment_count}</span>
+          <i class="fa-regular fa-envelope"></i><span>${
+            post.comment_count
+          }</span>
         </div>
         <div class="space-x-4">
           <i class="fa-regular fa-eye"></i><span>${post.view_count}</span>
         </div>
         <div class="space-x-4">
-          <i class="fa-regular fa-clock"></i><span>${post.posted_time} min</span>
+          <i class="fa-regular fa-clock"></i><span>${
+            post.posted_time
+          } min</span>
         </div>
       </div>
-      <button onclick="handleShowDetails('${post.id}')" class="rounded-full btn bg-[#797DFC]">
+      <button onclick="handleShowDetails('${
+        post.id
+      }')" class="rounded-full btn btn-primary bg-[#797DFC]">
         <i
           class="fa-regular fa-envelope-open rounded-full text-white text-xs md:text-base"
         ></i>
@@ -51,8 +62,10 @@ const displayPosts = (posts) => {
     </div>
   </div>
     `;
+
     cardContainer.appendChild(discusContainer);
   });
+  toggleSpinner(false);
 };
 
 const handleShowDetails = async (id) => {
@@ -66,11 +79,11 @@ const handleShowDetails = async (id) => {
 
 let sum = 0;
 const showReadDetails = (data) => {
-  sum++
-  const readCounts = document.getElementById('read-counts');
+  sum++;
+  const readCounts = document.getElementById("read-counts");
   const showReadContainer = document.getElementById("show-read-container");
   const div = document.createElement("div");
-  div.classList = `px-4 py-4 my-4 flex justify-between bg-white rounded-xl`;
+  div.classList = `p-4 my-4 flex justify-between bg-white rounded-xl flex-1`;
   div.innerHTML = `
   <h3 class="text-xl w-4/5">${sum}. ${data.title}</h3>
   <div class="flex items-center space-x-2 text-xl">
@@ -79,6 +92,30 @@ const showReadDetails = (data) => {
   `;
   showReadContainer.appendChild(div);
   readCounts.innerText = sum;
+};
+
+
+const toggleSpinner = (isTrue) => {
+  const loaderSpinner = document.getElementById('loader-icon');
+  if(isTrue){
+    loaderSpinner.classList.remove('hidden');
+  } else {
+    loaderSpinner.classList.add('hidden')
+  }
+}
+
+
+
+
+
+const handleSearch = () => {
+  toggleSpinner(true);
+  const searchField = document.getElementById("search-field");
+  const searchValue = searchField.value;
+
+  loadAuthor(searchValue);
+
+  searchField.value = "";
 };
 
 const postsContainer = async () => {
