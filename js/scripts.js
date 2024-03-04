@@ -1,12 +1,11 @@
 const loadAuthor = async () => {
-  const res = await fetch(
-    "https://openapi.programming-hero.com/api/retro-forum/posts"
-  );
+  const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
   const data = await res.json();
   const posts = data.posts;
   //   console.log(posts)
   displayPosts(posts);
 };
+
 
 const displayPosts = (posts) => {
   const cardContainer = document.getElementById("card-container");
@@ -18,7 +17,7 @@ const displayPosts = (posts) => {
     <div class="relative w-[72px]">
     <img class="rounded-2xl" src=${post.image} alt="" >
     
-    <div class="p-2 rounded-full bg-green-500 absolute border-2 border-white -top-1 -right-1">
+    <div id="active-round" class="p-2 rounded-full ${post.isActive === true ? 'bg-green-500' : 'bg-red-500'} absolute border-2 border-white -top-1 -right-1">
     </div>
     </div>
     <div class="space-y-4">
@@ -44,7 +43,7 @@ const displayPosts = (posts) => {
           <i class="fa-regular fa-clock"></i><span>${post.posted_time} min</span>
         </div>
       </div>
-      <button class="rounded-full btn bg-[#797DFC]">
+      <button onclick="handleShowDetails('${post.id}')" class="rounded-full btn bg-[#797DFC]">
         <i
           class="fa-regular fa-envelope-open rounded-full text-white text-xs md:text-base"
         ></i>
@@ -56,13 +55,40 @@ const displayPosts = (posts) => {
   });
 };
 
-
-const postsContainer = async() => {
-  const postContainer = document.getElementById('posts-container');
-  const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts')
+const handleShowDetails = async (id) => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/retro-forum/post/${id}`
+  );
   const data = await res.json();
-  data.forEach((element)=>{
-    const div = document.createElement('div');
+
+  showReadDetails(data);
+};
+
+let sum = 0;
+const showReadDetails = (data) => {
+  sum++
+  const readCounts = document.getElementById('read-counts');
+  const showReadContainer = document.getElementById("show-read-container");
+  const div = document.createElement("div");
+  div.classList = `px-4 py-4 my-4 flex justify-between bg-white rounded-xl`;
+  div.innerHTML = `
+  <h3 class="text-xl w-4/5">${sum}. ${data.title}</h3>
+  <div class="flex items-center space-x-2 text-xl">
+    <i class="fa-regular fa-eye"></i><span>${data.view_count}</span>
+  </div>
+  `;
+  showReadContainer.appendChild(div);
+  readCounts.innerText = sum;
+};
+
+const postsContainer = async () => {
+  const postContainer = document.getElementById("posts-container");
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
+  );
+  const data = await res.json();
+  data.forEach((element) => {
+    const div = document.createElement("div");
     div.innerHTML = `
     <div class="card border-2 border-[#12132D26] min-h-[550px]">
     <figure>
@@ -71,7 +97,7 @@ const postsContainer = async() => {
     <div class="card-body">
       <div class="flex items-center gap-5 text-[#12132D99]">
         <i class="fa-regular fa-calendar-days"></i>
-        <p>${element?.author?.posted_date || 'No Publish Date'}</p>
+        <p>${element?.author?.posted_date || "No Publish Date"}</p>
       </div>
       <h2 class="card-title text-lg font-extrabold font-mulish">
         ${element.title}
@@ -81,24 +107,22 @@ const postsContainer = async() => {
       </p>
       <div class="card-actions">
         <div>
-          <img class="h-[44px] rounded-full" src="${element.profile_image}" alt="" />
+          <img class="h-[44px] rounded-full" src="${
+            element.profile_image
+          }" alt="" />
         </div>
         <div>
           <h4 class="font-bold">${element.author.name}</h4>
-          <p>${element?.author?.designation || 'Unknown'}</p>
+          <p>${element?.author?.designation || "Unknown"}</p>
         </div>
       </div>
     </div>
   </div>
-    `
+    `;
     postContainer.appendChild(div);
-  })
-
-}
-
-
-
-
+  });
+};
 
 postsContainer();
+
 loadAuthor();

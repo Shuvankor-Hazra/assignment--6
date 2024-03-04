@@ -189,20 +189,17 @@
         <div class="mt-10 md:flex md:space-x-6">
           <!-- Discus-left -->
           <div id="card-container"></div>
+          
           <!-- Discus-right -->
-          <div class="my-10 md:mt-0 bg-[#12132D0D] rounded-3xl p-6">
-            <div class="flex justify-between pb-4">
+          <div class="my-10 md:mt-0 bg-[#12132D0D] rounded-3xl p-6 md:p-8 max-w-full flex-1">
+            <div class="flex justify-between pb-4 ">
               <h2 class="text-xl font-bold">Title</h2>
               <div class="flex items-center space-x-3 text-2xl">
                 <i class="fa-solid fa-check-double text-green-500"></i>
-                <h3 class="text-[#12132D99]">Mark as read (<span>4</span>)</h3>
+                <h3 class="text-[#12132D99]">Mark as read (<span id="read-counts">0</span>)</h3>
               </div>
             </div>
-            <div class="px-4 py-2 flex justify-between bg-white rounded-xl">
-              <h3>10 Kids Unaware of Their Halloween Costume</h3>
-              <div class="flex items-center space-x-2">
-                <i class="fa-regular fa-eye"></i><span>1560</span>
-              </div>
+            <div  id="show-read-container">
             </div>
           </div>
         </div>
@@ -245,35 +242,7 @@
         </div>
         <!-- Posts Card -->
         <div id="posts-container" class="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-          <!-- Single Card -->
-          <!-- <div class="card border-2 border-[#12132D26]">
-            <figure><img src="images/joinforum.png" alt="Shoes" /></figure>
-            <div class="card-body">
-              <div class="flex items-center gap-5 text-[#12132D99]">
-                <i class="fa-regular fa-calendar-days"></i>
-                <p>21 Oct 1992</p>
-              </div>
-              <h2 class="card-title text-lg font-extrabold font-mulish">
-                What will a mars habitat force that impact in our daily life!!!
-              </h2>
-              <p class="pb-4">
-                Yes, you can run unit tests and view the results directly within
-                the app.
-              </p>
-              <div class="card-actions">
-                <div class="">
-                  <img src="images/Ellipse.png" alt="" />
-                </div>
-                <div>
-                  <h4 class="font-bold">Cameron Williamson</h4>
-                  <p>ROR Developer</p>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
+          <!-- Single Post Card -->
         </div>
       </section>
     </main>
